@@ -4,7 +4,7 @@ COPY app.py .
 COPY requirements.txt .
 RUN pip install -r requirements.txt --no-cache-dir -t ./dependencies
 
-FROM gcr.io/distroless/python3
+FROM gcr.io/distroless/python3:nonroot
 WORKDIR /opt/app
 COPY --from=builder /opt/app .
 ENV PYTHONPATH=/opt/app/dependencies
